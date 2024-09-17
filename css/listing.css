@@ -1,0 +1,256 @@
+/* Helvetica Neue */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "FiraGo", sans-serif;
+  color: rgba(2, 21, 38, 1);
+}
+/* NAVIGATION */
+.header {
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #fff;
+}
+
+.logo {
+  width: 150px;
+  height: 24px;
+  margin: 38px 0 38px 162px;
+}
+.listing-hidden {
+  display: none;
+}
+
+/* LISTING */
+.heading-div {
+  margin: 62px 0 61px 0;
+}
+.add-listing-heading {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 38.4px;
+  color: rgba(2, 21, 38, 1);
+}
+.form-div {
+  background-color: #fff;
+  max-width: 790px;
+  margin: 0 auto;
+}
+.inner-heading {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.54px;
+  color: rgba(26, 26, 31, 1);
+  margin-bottom: 8px;
+}
+.main-location-div .inner-heading {
+  margin-bottom: 22px;
+}
+.buy-rent-divs {
+  display: flex;
+  gap: 84px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+input[type="radio"] {
+  display: none;
+}
+.custom-radio {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(2, 21, 38, 1);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+input[type="radio"]:checked + .custom-radio::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  background-color: rgba(2, 21, 38, 1);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.buy-label,
+.rent-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.buy-label:hover,
+.rent-label:hover {
+  cursor: pointer;
+}
+.buy-rent-span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: left;
+  color: rgba(26, 26, 31, 1);
+}
+.listing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.all-labels {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  text-align: left;
+  margin-bottom: 1px;
+}
+
+.each-form-div-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 22px;
+  column-gap: 20px;
+}
+.each-label-input-div,
+.description-div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.description-div {
+  margin: 20px 0;
+}
+.all-listing-inputs {
+  border: 1px solid rgba(128, 138, 147, 1);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.all-listing-inputs:focus {
+  outline: none;
+}
+.listing-err-tick {
+  width: 10px;
+  height: 8.18px;
+}
+.listing-err-msg-general {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+}
+.description-label {
+  margin-bottom: 1px;
+}
+.description-input {
+  height: 135px;
+  vertical-align: top;
+  resize: none;
+}
+
+/* //////////////////////////////////////////////// */
+.listing-photo-input {
+  display: none;
+}
+
+.listing-image-preview {
+  width: 788px;
+  height: 120px;
+  margin-top: 10px;
+  border: 1px dashed #2d3648;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 5px;
+}
+.listing-image-preview:hover {
+  cursor: pointer;
+}
+.listing-agent-upload-photo {
+  width: 24px;
+  height: 24px;
+}
+.listing-uploaded-photo {
+  width: 92px;
+  height: 82px;
+  border-radius: 4px;
+}
+.listing-delete-image {
+  background-color: #fff;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  border: 1px solid #2c4861;
+  border-radius: 50%;
+  position: absolute;
+  top: 66%;
+  left: 54%;
+  z-index: 500;
+}
+.listing-delete-image:hover {
+  cursor: pointer;
+}
+
+/* ///////////////////////////////////////////// */
+
+.listing-agent-div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.listing-agent-div-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.listing-agent-input-select {
+  width: 384px;
+  /* appearance: none; */
+}
+/* .................................................. */
+
+.listing-btns-div {
+  margin: 10px 0 87px 0;
+  text-align: end;
+}
+.listing-cancel-btn,
+.add-listing-btn-below {
+  border: none;
+  background-color: inherit;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  border: 1px solid rgba(249, 59, 29, 1);
+}
+.listing-cancel-btn {
+  margin-right: 15px;
+
+  color: rgba(249, 59, 29, 1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.listing-cancel-btn:hover {
+  background-color: rgba(249, 59, 29, 1);
+  color: #fff;
+  cursor: pointer;
+}
+.add-listing-btn-below {
+  background-color: rgba(249, 59, 29, 1);
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+.add-listing-btn-below:hover {
+  background-color: #df3014;
+  cursor: pointer;
+}

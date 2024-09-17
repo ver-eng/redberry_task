@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/listing.css" rel="stylesheet" />
+    <script defer src="js/listing.js"></script>
+    <title>Listing</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navigation">
+        <a href="index.html" class="logo-link">
+          <img src="photos/LOGO-02 3.svg" alt="Redberry Logo" class="logo" />
+        </a>
+      </nav>
+    </header>
+    <main class="main-part">
+      <div class="whole-listing-div">
+        <div class="heading-div">
+          <h1 class="add-listing-heading">ლისტინგის დამატება</h1>
+        </div>
+        <div class="form-div">
+          <form
+            class="listing-form"
+            action="/submit"
+            method="POST"
+            id="submitListingForm"
+          >
+            <div class="contract-type each-form-div">
+              <h3 class="inner-heading">გარიგების ტიპი</h3>
+              <div class="buy-rent-divs">
+                <div class="buy-div buy-rent-div">
+                  <label for="buy" class="buy-label">
+                    <input
+                      type="radio"
+                      id="buy"
+                      name="is_rental"
+                      value="0"
+                      required
+                      class="buy-input buy-rent-input all-listing-inputs"
+                    />
+                    <span class="custom-radio"></span
+                    ><span class="buy-rent-span">იყიდება</span></label
+                  >
+                </div>
+
+                <div class="rent-div buy-rent-div">
+                  <label for="rent" class="rent-label">
+                    <input
+                      type="radio"
+                      id="rent"
+                      name="is_rental"
+                      value="1"
+                      class="rent-input buy-rent-input all-listing-inputs"
+                    /><span class="custom-radio"></span>
+                    <span class="buy-rent-span">ქირავდება</span></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="main-location-div each-form-div">
+              <h3 class="inner-heading">მდებარეობა</h3>
+              <div class="inner-location-div each-form-div-inner">
+                <div class="address-div each-label-input-div">
+                  <label for="address" class="address-label all-labels"
+                    >მისამართი*</label
+                  >
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    required
+                    class="address-input all-listing-inputs"
+                  />
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span
+                      class="listing-err-mgs-address listing-err-msg-general"
+                      >მინიმუმ ორი სიმბოლო</span
+                    >
+                  </div>
+                </div>
+
+                <div class="post-index-div each-label-input-div">
+                  <label for="post-index" class="post-index-label all-labels"
+                    >საფოსტო ინდექსი*</label
+                  >
+                  <input
+                    type="text"
+                    id="post-index"
+                    name="zip_code"
+                    required
+                    class="post-index-input all-listing-inputs"
+                  />
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="listing-err-mgs-zip listing-err-msg-general"
+                      >მხოლოდ რიცხვები</span
+                    >
+                  </div>
+                </div>
+                <div class="region-div each-label-input-div">
+                  <label for="region" class="region-label all-labels"
+                    >რეგიონი</label
+                  >
+
+                  <select
+                    id="region"
+                    name="region_id"
+                    required
+                    class="region-input region-input-select all-listing-inputs"
+                  >
+                    <option value="" class="each-region-option">
+                      აირჩიე რეგიონი
+                    </option>
+                  </select>
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="listing-err-mgs-region listing-err-msg-general"
+                      >აირჩიე რეგიონი</span
+                    >
+                  </div>
+                </div>
+                <div class="city-div each-label-input-div">
+                  <label for="city" class="city-label all-labels">ქალაქი</label>
+
+                  <select
+                    id="city"
+                    name="city_id"
+                    required
+                    class="city-input city-input-select all-listing-inputs"
+                    disabled
+                  >
+                    <option value="" class="each-city-option">
+                      აირჩიე ქალაქი
+                    </option>
+                  </select>
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="listing-err-mgs-city listing-err-msg-general"
+                      >აირჩიე ქალაქი</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="appt-details-div each-form-div">
+              <h3 class="inner-heading">ბინის დეტალები</h3>
+              <div class="inner-appt-details-div each-form-div-inner">
+                <div class="price-div each-label-input-div">
+                  <label for="price" class="price-label all-labels">ფასი</label>
+                  <input
+                    type="text"
+                    id="price"
+                    name="price"
+                    required
+                    class="price-input all-listing-inputs"
+                  />
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="listing-err-mgs-price listing-err-msg-general"
+                      >მხოლოდ რიცხვები</span
+                    >
+                  </div>
+                </div>
+
+                <div class="area-div each-label-input-div">
+                  <label for="area" class="area-label all-labels"
+                    >ფართობი</label
+                  >
+                  <input
+                    type="text"
+                    id="area"
+                    name="area"
+                    required
+                    class="area-input all-listing-inputs"
+                  />
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="listing-err-mgs-area listing-err-msg-general"
+                      >მხოლოდ რიცხვები</span
+                    >
+                  </div>
+                </div>
+                <div class="bedrooms-div each-label-input-div">
+                  <label for="bedrooms" class="bedrooms-label all-labels"
+                    >საძინებლების რაოდენობა*</label
+                  >
+                  <input
+                    type="text"
+                    id="bedrooms"
+                    name="bedrooms"
+                    required
+                    class="bedrooms-input all-listing-inputs"
+                  />
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span
+                      class="listing-err-mgs-bedrooms listing-err-msg-general"
+                      >მხოლოდ რიცხვები</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="inner-description-div">
+                <div class="description-div">
+                  <label for="description" class="description-label all-labels"
+                    >აღწერა*</label
+                  >
+                  <textarea
+                    type="text"
+                    id="description"
+                    name="description"
+                    required
+                    class="description-input all-listing-inputs"
+                  ></textarea>
+                  <div class="listing-err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span
+                      class="listing-err-mgs-description listing-err-msg-general"
+                      >მინიმუმ ხუთი სიტყვა</span
+                    >
+                  </div>
+                </div>
+                <div class="listing-photo-upload-div">
+                  <label
+                    for="listing-photo"
+                    class="listing-photo-upload-label first-two-labels all-labels"
+                    >ატვირთეთ ფოტო *
+                    <div class="listing-image-preview" id="image-preview">
+                      <img
+                        src="photos/photo-upload-circle.svg"
+                        class="listing-agent-upload-photo"
+                      />
+                      <img
+                        src="photos/image-delete-icon.svg"
+                        class="listing-delete-image listing-hidden"
+                        alt="delete icon"
+                      /></div
+                  ></label>
+                  <input
+                    type="file"
+                    id="listing-photo"
+                    name="image"
+                    required
+                    class="listing-photo-input first-four-inputs"
+                  />
+                  <div class="err-msg-div">
+                    <img src="photos/tick-icon.svg" class="listing-err-tick" />
+                    <img
+                      src="photos/green-tick.svg"
+                      class="listing-err-tick listing-green-tick listing-hidden"
+                    />
+                    <img
+                      src="photos/red-tick.svg"
+                      class="listing-err-tick listing-red-tick listing-hidden"
+                    />
+                    <span class="err-mgs-listing-photo listing-err-msg-general"
+                      >ატვირთეთ ფოტო შესაბამის ფორმატში, მოცულობით 2MB-მდე</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="listing-agent-div each-form-div">
+              <h3 class="inner-heading">აგენტი</h3>
+              <div class="inner-agent-div">
+                <div class="listing-agent-div-inner">
+                  <label
+                    for="listing-agent"
+                    class="listing-agent-label all-labels"
+                    >აირჩიე</label
+                  >
+                  <select
+                    id="listing-agent"
+                    name="agent_id"
+                    required
+                    class="listing-agent-input listing-agent-input-select all-listing-inputs"
+                  >
+                    <option value="" class="each-agent-option">
+                      აირჩიე აგენტი
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="listing-btns-div">
+              <button class="listing-cancel-btn">გაუქმება</button
+              ><button
+                class="add-listing-btn-below"
+                type="submit"
+                form="submitListingForm"
+              >
+                დაამატე ლისტინგი
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

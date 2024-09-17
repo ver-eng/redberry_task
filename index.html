@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script defer src="js/script.js"></script>
+    <script defer src="js/hoverclicks.js"></script>
+    <title>Bootcamp - wireframes</title>
+  </head>
+  <body>
+    <div class="overlay hidden"></div>
+    <header class="header">
+      <nav class="navigation">
+        <a href="index.html" class="logo-link">
+          <img src="photos/LOGO-02 3.svg" alt="Redberry Logo" class="logo" />
+        </a>
+      </nav>
+    </header>
+    <section class="section-one">
+      <div class="section-one-div">
+        <div class="filters">
+          <div class="region each-filter-div">
+            <button class="region-heading each-filter-heading-div">
+              <h4 class="each-filter-heading">რეგიონი</h4>
+              <img
+                src="photos/arr-Icon-down.svg"
+                alt="arrow down"
+                class="arrow-down"
+              />
+            </button>
+            <div class="regions-list-div"></div>
+          </div>
+          <div class="price each-filter-div">
+            <button class="price-heading each-filter-heading-div">
+              <h4 class="each-filter-heading">საფასო კატეგორია</h4>
+              <img
+                src="photos/arr-Icon-down.svg"
+                alt="arrow down"
+                class="arrow-down"
+              />
+            </button>
+            <div class="price-list-div"></div>
+          </div>
+          <div class="area each-filter-div">
+            <button class="area-heading each-filter-heading-div">
+              <h4 class="each-filter-heading">ფართობი</h4>
+              <img
+                src="photos/arr-Icon-down.svg"
+                alt="arrow down"
+                class="arrow-down"
+              />
+            </button>
+            <div class="area-list-div"></div>
+          </div>
+          <div class="bedrooms each-filter-div">
+            <button class="bedrooms-heading each-filter-heading-div">
+              <h4 class="each-filter-heading">საძინებლების რაოდენობა</h4>
+              <img
+                src="photos/arr-Icon-down.svg"
+                alt="arrow down"
+                class="arrow-down"
+              />
+            </button>
+            <div class="bedrooms-list-div"></div>
+          </div>
+        </div>
+        <div class="add-listing-agent">
+          <div class="add-listing">
+            <button class="add-listing-btn">
+              <a href="listing.html" class="add-listing-link"
+                ><img
+                  src="photos/ic_round-plus.svg"
+                  alt="plus icon"
+                  class="plus-img"
+                />
+                <span class="add-listing-span add-span"
+                  >ლისტინგის დამატება</span
+                ></a
+              >
+            </button>
+          </div>
+          <div class="add-agent">
+            <button class="add-agent-btn">
+              <img
+                src="photos/plus-img-red.svg"
+                alt="plus icon"
+                class="plus-img plus-img-second-red"
+              />
+              <img
+                src="photos/ic_round-plus.svg"
+                alt="plus icon"
+                class="plus-img plus-img-second hidden"
+              />
+              <span class="add-agent-span add-span">აგენტის დამატება</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-two hidden">
+      <div class="add-agent-modal-div">
+        <div class="modal-heading-div">
+          <h2 class="modal-heading">აგენტის დამატება</h2>
+        </div>
+        <form class="modal-form" action="/submit" method="POST" id="submitForm">
+          <div class="form-div">
+            <div class="name-and-lastname-div">
+              <div class="name-div agent-personal-info-div">
+                <label for="firstName" class="first-name-label first-two-labels"
+                  >სახელი*</label
+                >
+                <input
+                  type="text"
+                  id="firstName"
+                  name="name"
+                  required
+                  class="first-name-input first-four-inputs"
+                />
+                <div class="err-msg-div">
+                  <img src="photos/tick-icon.svg" class="err-tick" />
+                  <img
+                    src="photos/green-tick.svg"
+                    class="err-tick green-tick hidden"
+                  />
+                  <img
+                    src="photos/red-tick.svg"
+                    class="err-tick red-tick hidden"
+                  />
+                  <span class="err-mgs-name err-msg-general"
+                    >მინიმუმ ორი სიმბოლო</span
+                  >
+                </div>
+              </div>
+              <div class="last-name-div agent-personal-info-div">
+                <label for="lastName" class="last-name-label first-two-labels"
+                  >გვარი</label
+                >
+                <input
+                  type="text"
+                  id="surname"
+                  name="surname"
+                  required
+                  class="last-name-input first-four-inputs"
+                />
+                <div class="err-msg-div">
+                  <img src="photos/tick-icon.svg" class="err-tick" />
+                  <img
+                    src="photos/green-tick.svg"
+                    class="err-tick green-tick hidden"
+                  />
+                  <img
+                    src="photos/red-tick.svg"
+                    class="err-tick red-tick hidden"
+                  />
+                  <span class="err-mgs-last-name err-msg-general"
+                    >მინიმუმ ორი სიმბოლო</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="emil-and-phone-div">
+              <div class="email-div agent-personal-info-div">
+                <label for="email" class="email-label first-two-labels"
+                  >ელ-ფოსტა*</label
+                >
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  required
+                  class="email-input first-four-inputs"
+                />
+                <div class="err-msg-div">
+                  <img src="photos/tick-icon.svg" class="err-tick" />
+                  <img
+                    src="photos/green-tick.svg"
+                    class="err-tick green-tick hidden"
+                  />
+                  <img
+                    src="photos/red-tick.svg"
+                    class="err-tick red-tick hidden"
+                  />
+                  <span class="err-mgs-email err-msg-general"
+                    >გამოიყენეთ @redberry.ge ფოსტა</span
+                  >
+                </div>
+              </div>
+              <div class="last-name-div agent-personal-info-div">
+                <label for="phone-num" class="last-name-label first-two-labels"
+                  >ტელეფონის ნომერი</label
+                >
+                <input
+                  type="text"
+                  id="phone-num"
+                  name="phone"
+                  required
+                  maxlength="9"
+                  class="phone-num-input first-four-inputs"
+                />
+                <div class="err-msg-div">
+                  <img src="photos/tick-icon.svg" class="err-tick" />
+                  <img
+                    src="photos/green-tick.svg"
+                    class="err-tick green-tick hidden"
+                  />
+                  <img
+                    src="photos/red-tick.svg"
+                    class="err-tick red-tick hidden"
+                  />
+                  <span class="err-mgs-last-name err-msg-general"
+                    >მხოლოდ რიცხვები, ფორმატი - 5XXXXXXXX</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="photo-upload-div">
+              <label for="photo" class="photo-upload-label first-two-labels"
+                >ატვირთეთ ფოტო *
+                <div class="image-preview" id="image-preview">
+                  <img
+                    src="photos/photo-upload-circle.svg"
+                    class="agent-upload-photo"
+                  />
+                  <img
+                    src="photos/image-delete-icon.svg"
+                    class="delete-image hidden"
+                    alt="delete icon"
+                  /></div
+              ></label>
+              <input
+                type="file"
+                id="photo"
+                name="avatar"
+                required
+                class="photo-input first-four-inputs"
+              />
+              <div class="err-msg-div">
+                <img src="photos/tick-icon.svg" class="err-tick" />
+                <img
+                  src="photos/green-tick.svg"
+                  class="err-tick green-tick hidden"
+                />
+                <img
+                  src="photos/red-tick.svg"
+                  class="err-tick red-tick hidden"
+                />
+                <span class="err-mgs-photo err-msg-general"
+                  >ატვირთეთ ფოტო შესაბამის ფორმატში, მოცულობით 2MB-მდე</span
+                >
+              </div>
+              <!-- <div class="image-preview" id="image-preview">
+                <img src="photos/photo-upload-circle.svg" />
+              </div> -->
+            </div>
+          </div>
+          <div class="modal-btns-div">
+            <button class="cancel-btn">გაუქმება</button>
+            <button class="add-agent-btn-below" type="submit" form="submitForm">
+              დაამატე აგენტი
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
