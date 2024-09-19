@@ -352,79 +352,6 @@ function returnToFile(base64String) {
   }
 }
 
-// localStorage.clear();
-// listingForm.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   const formData = new FormData(e.target);
-
-//   const fileInput = document.querySelector('input[name="image"]');
-//   const file = fileInput.files[0];
-//   // console.log(fileInput.files[0]);
-//   if (file) {
-//     formData.set("image", file);
-//   }
-//   const regionID = Number(
-//     document.querySelector('select[name="region_id"]').value
-//   );
-//   const cityID = Number(document.querySelector('select[name="city_id"]').value);
-//   const price = Number(document.querySelector('input[name="price"]').value);
-//   const area = Number(document.querySelector('input[name="area"]').value);
-//   const bedrooms = Number(
-//     document.querySelector('input[name="bedrooms"]').value
-//   );
-//   const is_rental = Number(
-//     document.querySelector('input[name="is_rental"]:checked').value
-//   );
-//   const agent_id = Number(
-//     document.querySelector('select[name="agent_id"]').value
-//   );
-
-//   formData.set("region_id", regionID);
-//   formData.set("city_id", cityID);
-//   formData.set("price", price);
-//   formData.set("area", area);
-//   formData.set("bedrooms", bedrooms);
-//   formData.set("is_rental", is_rental);
-//   formData.set("agent_id", agent_id);
-
-//   for (let [key, value] of formData.entries()) {
-//     console.log(`${key}: ${value}`);
-//     console.log(`${key}: ${typeof value}`);
-//   }
-//   sendAgentDataFunction(formData);
-// });
-
-// function sendAgentDataFunction(formData) {
-//   fetch(API_LISTING_POST, {
-//     method: "POST",
-//     headers: {
-//       Authorization: `Bearer ${API_TOKEN}`,
-//       // "Content-Type": "multipart/form-data",
-//       // Accept: "application/json", // Specify JSON content type
-//     },
-//     body: formData, // Send JSON data
-//   })
-//     .then((response) => {
-//       // Check if the content type is JSON
-//       const contentType = response.headers.get("content-type");
-
-//       if (contentType && contentType.includes("application/json")) {
-//         // If the response is JSON, parse it
-//         return response.json();
-//       } else {
-//         // If not, handle as text or throw an error
-//         return response.text().then((text) => {
-//           throw new Error(`Expected JSON, but got: ${text}`);
-//         });
-//       }
-//     })
-//     .then((data) => {
-//       console.log("Success:", data);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
 let isAllInputFilled = false;
 addListingBtn.addEventListener("click", function () {
   checkEmptyValues();
@@ -559,6 +486,7 @@ function clearFormAndStorage() {
     if (eachInput.nextElementSibling.children[3])
       eachInput.nextElementSibling.children[3].style.color = "#021526";
   });
+  window.location.href = "index.html";
 }
 fetch(
   "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
@@ -583,8 +511,6 @@ fetch(
     console.error("Error fetching data:", error);
   });
 
-// localStorage.clear();
 window.addEventListener("popstate", function (event) {
-  // Clear localStorage when user navigates back to the previous page
   localStorage.clear();
 });

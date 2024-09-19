@@ -33,6 +33,7 @@ body {
   padding: 6px;
   border: 1px solid #dbdbdb;
   border-radius: 10px;
+  position: relative;
 }
 .each-filter-heading-div {
   border: none;
@@ -292,4 +293,185 @@ body {
 }
 .add-agent-btn-below:hover {
   background-color: #df3014;
+}
+
+/* ......................................................... */
+.cards-box {
+  max-width: 1596px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 32px;
+  gap: 20px;
+}
+.each-card {
+  width: 384px;
+}
+.image {
+  border-radius: 14px, 14px, 0px, 0px;
+  height: 307px;
+  width: 384px;
+}
+.top-part {
+  position: relative;
+  height: 307px;
+  width: 384px;
+}
+.is_rental {
+  position: absolute;
+  border-radius: 15px;
+  width: 90px;
+  background-color: rgba(2, 21, 38, 0.5);
+  padding: 6px;
+  top: 23px;
+  left: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.is_rental-span {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.4px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+.bottom-info-div {
+  padding: 22px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: rgba(219, 219, 219, 1);
+  border-radius: 0 0 14px 14px;
+}
+.price-div {
+  margin-bottom: 6px;
+}
+.price-span {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33.6px;
+  text-align: left;
+}
+.address-div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8px;
+}
+.location-icon {
+  height: 20px;
+  width: 20px;
+}
+.bed-icon {
+  height: 24px;
+  width: 24px;
+}
+.area-icon {
+  height: 18px;
+  width: 18px;
+}
+.zip-icon {
+  height: 16px;
+  width: 18px;
+}
+.city-span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  color: rgba(2, 21, 38, 0.7);
+}
+.rest-info-div {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rest-info-each {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5px;
+}
+.all-three-span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  color: rgba(2, 21, 38, 0.7);
+}
+
+/* ................................................................. */
+.region {
+  /* position: relative; */
+}
+.filter-div-heading {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: left;
+  color: rgba(2, 21, 38, 1);
+  margin-bottom: 24px;
+}
+
+.regions-list-div {
+  position: absolute;
+  top: 57px;
+  left: -1px;
+  z-index: 200;
+  padding: 24px 28px 24px 24px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(219, 219, 219, 1);
+  border-radius: 10px;
+}
+.region-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+  row-gap: 16px;
+  width: 679px;
+  margin-bottom: 32px;
+}
+.filter-label {
+  /* font-family: FiraGO; */
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: left;
+  color: rgba(2, 21, 38, 1);
+  margin-left: 8px;
+}
+input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(219, 219, 219, 1);
+  border-radius: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  border-color: rgba(69, 168, 73, 1);
+  background-color: rgba(69, 168, 73, 1);
+}
+input[type="checkbox"]:checked:before {
+  content: "";
+  color: white;
+  background-image: url("../photos/filter-tick.svg");
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
