@@ -8,6 +8,8 @@ const API_URL_CITIES =
 
 const API_AGENTS =
   "https://api.real-estate-manager.redberryinternship.ge/api/agents";
+const API_LISTING_POST =
+  "https://api.real-estate-manager.redberryinternship.ge/api/real-estates";
 const API_TOKEN = "9cfcb369-53f9-4ac7-82e2-272072cee0b3";
 const regionSelectInput = document.querySelector(".region-input-select");
 const citySelectInput = document.querySelector(".city-input-select");
@@ -141,6 +143,7 @@ document
   .querySelector(".listing-cancel-btn")
   .addEventListener("click", function (e) {
     e.preventDefault();
+    clearFormAndStorage();
   });
 
 listingForm.addEventListener("input", function (e) {
@@ -166,9 +169,9 @@ listingForm.addEventListener("input", function (e) {
 });
 
 function regexAndotherDetails(target) {
-  const minTwoSymbolssRegex = /^[\w\s,.'-]{2,}$/;
+  const minTwoSymbolssRegex = /^[\p{L}\d\s.,#'’\-]{2,}$/u;
   const onlyNumbersRegex = /^[0-9]+$/;
-  const minFiveWordsRegex = /^(\b\w+\b[\s,.'-]*){5,}$/;
+  const minFiveWordsRegex = /^(\S+\s+){4,}\S+(\s*)$/;
   if (target.name === "address") {
     formObj[`${target.name}`] = checkVaidation(minTwoSymbolssRegex, target);
   } else if (
@@ -233,18 +236,31 @@ deletePhotoBtn.addEventListener("click", function (e) {
   e.stopPropagation();
   e.preventDefault();
   const photo = document.querySelector(".listing-photo-input");
+  // photo.value = "";
+  // uploadedPhotoAgent.src = "photos/photo-upload-circle.svg";
+  // uploadedPhotoAgent.classList.remove("listing-uploaded-photo");
+  // photo.nextElementSibling.children[0].classList.remove("hidden");
+  // photo.nextElementSibling.children[1].classList.add("hidden");
+  // photo.nextElementSibling.children[2].classList.add("hidden");
+  // photo.nextElementSibling.children[3].style.color = "#021526";
+  // photo.nextElementSibling.children[3].innerHTML =
+  //   "ატვირთეთ ფოტო შესაბამის ფორმატში, მოცულობით 2MB-მდე";
+  // deletePhotoBtn.classList.add("listing-hidden");
+  deleteImage(photo);
+  localStorage.removeItem("image");
+});
+function deleteImage(photo) {
   photo.value = "";
   uploadedPhotoAgent.src = "photos/photo-upload-circle.svg";
   uploadedPhotoAgent.classList.remove("listing-uploaded-photo");
-  photo.nextElementSibling.children[0].classList.remove("hidden");
-  photo.nextElementSibling.children[1].classList.add("hidden");
-  photo.nextElementSibling.children[2].classList.add("hidden");
+  photo.nextElementSibling.children[0].classList.remove("listing-hidden");
+  photo.nextElementSibling.children[1].classList.add("listing-hidden");
+  photo.nextElementSibling.children[2].classList.add("listing-hidden");
   photo.nextElementSibling.children[3].style.color = "#021526";
   photo.nextElementSibling.children[3].innerHTML =
     "ატვირთეთ ფოტო შესაბამის ფორმატში, მოცულობით 2MB-მდე";
   deletePhotoBtn.classList.add("listing-hidden");
-  localStorage.removeItem("image");
-});
+}
 function checkPhotoDetails(file, photo) {
   const maxSizeInBytes = 2 * 1024 * 1024;
   const allowedTypes = [
@@ -337,39 +353,238 @@ function returnToFile(base64String) {
 }
 
 // localStorage.clear();
+// listingForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   const formData = new FormData(e.target);
+
+//   const fileInput = document.querySelector('input[name="image"]');
+//   const file = fileInput.files[0];
+//   // console.log(fileInput.files[0]);
+//   if (file) {
+//     formData.set("image", file);
+//   }
+//   const regionID = Number(
+//     document.querySelector('select[name="region_id"]').value
+//   );
+//   const cityID = Number(document.querySelector('select[name="city_id"]').value);
+//   const price = Number(document.querySelector('input[name="price"]').value);
+//   const area = Number(document.querySelector('input[name="area"]').value);
+//   const bedrooms = Number(
+//     document.querySelector('input[name="bedrooms"]').value
+//   );
+//   const is_rental = Number(
+//     document.querySelector('input[name="is_rental"]:checked').value
+//   );
+//   const agent_id = Number(
+//     document.querySelector('select[name="agent_id"]').value
+//   );
+
+//   formData.set("region_id", regionID);
+//   formData.set("city_id", cityID);
+//   formData.set("price", price);
+//   formData.set("area", area);
+//   formData.set("bedrooms", bedrooms);
+//   formData.set("is_rental", is_rental);
+//   formData.set("agent_id", agent_id);
+
+//   for (let [key, value] of formData.entries()) {
+//     console.log(`${key}: ${value}`);
+//     console.log(`${key}: ${typeof value}`);
+//   }
+//   sendAgentDataFunction(formData);
+// });
+
+// function sendAgentDataFunction(formData) {
+//   fetch(API_LISTING_POST, {
+//     method: "POST",
+//     headers: {
+//       Authorization: `Bearer ${API_TOKEN}`,
+//       // "Content-Type": "multipart/form-data",
+//       // Accept: "application/json", // Specify JSON content type
+//     },
+//     body: formData, // Send JSON data
+//   })
+//     .then((response) => {
+//       // Check if the content type is JSON
+//       const contentType = response.headers.get("content-type");
+
+//       if (contentType && contentType.includes("application/json")) {
+//         // If the response is JSON, parse it
+//         return response.json();
+//       } else {
+//         // If not, handle as text or throw an error
+//         return response.text().then((text) => {
+//           throw new Error(`Expected JSON, but got: ${text}`);
+//         });
+//       }
+//     })
+//     .then((data) => {
+//       console.log("Success:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
+let isAllInputFilled = false;
+addListingBtn.addEventListener("click", function () {
+  checkEmptyValues();
+});
+function checkEmptyValues() {
+  isAllInputFilled = true;
+  const inputs = document.querySelectorAll(
+    "#submitListingForm input,#submitListingForm select, #submitListingForm textarea"
+  );
+  inputs.forEach((eachInput) => {
+    if (!eachInput.value) {
+      isAllInputFilled = false;
+
+      eachInput?.nextElementSibling?.children[0]?.classList.add(
+        "listing-hidden"
+      );
+      eachInput?.nextElementSibling?.children[1]?.classList.add(
+        "listing-hidden"
+      );
+      eachInput?.nextElementSibling?.children[2]?.classList.remove(
+        "listing-hidden"
+      );
+      if (eachInput.nextElementSibling.children[3]) console.log("");
+      eachInput.nextElementSibling.children[3].style.color = "#F93B1D";
+      console.log(eachInput);
+      console.log(isAllInputFilled);
+    }
+  });
+}
 listingForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  const formData = new FormData(e.target);
+  if (isAllInputFilled === true) {
+    console.log(isAllInputFilled);
+    const formData = new FormData(e.target);
+    const fileInput = document.querySelector('input[name="image"]');
+    const file = fileInput.files[0];
+    if (file) {
+      formData.set("image", file);
+    }
 
-  const fileInput = document.querySelector('input[name="image"]');
-  const file = fileInput.files[0];
-  // console.log(fileInput.files[0]);
-  if (file) {
-    formData.set("image", file);
-  }
-  const regionID = Number(
-    document.querySelector('select[name="region_id"]').value
-  );
-  const cityID = Number(document.querySelector('select[name="city_id"]').value);
-  const price = Number(document.querySelector('input[name="price"]').value);
-  const area = Number(document.querySelector('input[name="area"]').value);
-  const bedrooms = Number(
-    document.querySelector('input[name="bedrooms"]').value
-  );
-  const is_rental = document.querySelector('input[name="is_rental"]').value;
+    const regionID = Number(
+      document.querySelector('select[name="region_id"]').value
+    );
+    const cityID = Number(
+      document.querySelector('select[name="city_id"]').value
+    );
+    const price = Number(document.querySelector('input[name="price"]').value);
+    const area = Number(document.querySelector('input[name="area"]').value);
+    const bedrooms = Number(
+      document.querySelector('input[name="bedrooms"]').value
+    );
+    const is_rental = Number(
+      document.querySelector('input[name="is_rental"]:checked').value
+    );
+    const agent_id = Number(
+      document.querySelector('select[name="agent_id"]').value
+    );
 
-  console.log(is_rental);
-  formData.set("region_id", regionID);
-  formData.set("city_id", cityID);
-  formData.set("price", price);
-  formData.set("area", area);
-  formData.set("bedrooms", bedrooms);
-  // Log FormData entries (for demonstration purposes)
-  for (let [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`);
-    console.log(`${key}: ${typeof value}`);
+    formData.set("region_id", regionID);
+    formData.set("city_id", cityID);
+    formData.set("price", price);
+    formData.set("area", area);
+    formData.set("bedrooms", bedrooms);
+    formData.set("is_rental", is_rental);
+    formData.set("agent_id", agent_id);
+
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+
+    sendAgentDataFunction(formData);
+  } else {
+    console.log(isAllInputFilled);
   }
-  console.log();
 });
 
-// is_rental problemmuria, sul 0 values madzlevs
+function sendAgentDataFunction(formData) {
+  fetch(API_LISTING_POST, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    body: formData,
+  })
+    .then((response) => {
+      // Check if the response is JSON
+      const contentType = response.headers.get("content-type");
+
+      if (response.ok) {
+        // If the response is JSON, parse it
+        if (contentType && contentType.includes("application/json")) {
+          return response.json();
+        } else {
+          // If not JSON, return text (likely an error HTML page)
+          return response.text().then((text) => {
+            throw new Error(`Expected JSON, but got HTML: ${text}`);
+          });
+        }
+      } else {
+        // Handle HTTP error codes
+        return response.text().then((text) => {
+          throw new Error(`Error ${response.status}: ${text}`);
+        });
+      }
+    })
+    .then((data) => {
+      console.log("Success:", data);
+      clearFormAndStorage();
+    })
+    .catch((error) => {
+      console.error("Error:", error.message);
+    });
+}
+
+function clearFormAndStorage() {
+  localStorage.clear();
+  listingForm.reset();
+  const inputs = document.querySelectorAll(
+    "#submitListingForm input,#submitListingForm select, #submitListingForm textarea"
+  );
+  inputs.forEach((eachInput) => {
+    if (eachInput.name === "image") {
+      deleteImage(eachInput);
+    } else if (eachInput.name === "city_id") {
+      eachInput.disabled = true;
+    }
+    eachInput?.nextElementSibling?.children[0]?.classList.remove(
+      "listing-hidden"
+    );
+    eachInput?.nextElementSibling?.children[1]?.classList.add("listing-hidden");
+    eachInput?.nextElementSibling?.children[2]?.classList.add("listing-hidden");
+    if (eachInput.nextElementSibling.children[3])
+      eachInput.nextElementSibling.children[3].style.color = "#021526";
+  });
+}
+fetch(
+  "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  }
+)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+
+// localStorage.clear();
+window.addEventListener("popstate", function (event) {
+  // Clear localStorage when user navigates back to the previous page
+  localStorage.clear();
+});
