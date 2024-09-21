@@ -1,6 +1,7 @@
 let url = new URL(window.location.href);
 let params = new URLSearchParams(url.search);
 let cardId = params.get("card_id"); // 'chrome-instant'
+console.log(cardId);
 const API_TOKEN = "9cfcb369-53f9-4ac7-82e2-272072cee0b3";
 const API_URL =
   "https://api.real-estate-manager.redberryinternship.ge/api/real-estates";
@@ -271,8 +272,51 @@ function renderClickedCard(data) {
         </div>
       </div>`;
   cardDiv.innerHTML = carrdInfo;
+  deleteListingfunction(data.id);
 }
 
 document.querySelector(".go-back-btn").addEventListener("click", function () {
   window.location = "index.html";
+});
+const overlay = document.querySelector(".overlay");
+const deleteListing = document.querySelector(".delete-listing");
+const cancelBtn = document.querySelector(".cancelBtn");
+const approveBtn = document.querySelector(".approveBtn");
+function deleteListingfunction(id) {
+  document
+    .querySelector(".listing-delete-btn")
+    .addEventListener("click", function () {
+      overlay.classList.remove("hidden");
+      deleteListing.classList.remove("hidden");
+    });
+}
+
+cancelBtn.addEventListener("click", function () {
+  overlay.classList.add("hidden");
+  deleteListing.classList.add("hidden");
+});
+approveBtn.addEventListener("click", function () {
+  fetch(
+    `https://api.real-estate-manager.redberryinternship.ge/api/real-estates/${cardId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+    }
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Data deleted successfully:", data);
+      window.location = "index.html";
+    })
+    .catch((error) => {
+      console.error("Error deleting data:", error);
+    });
 });

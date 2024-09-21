@@ -3,7 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  position: relative;
+}
 .header {
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
@@ -336,4 +338,78 @@ button:hover {
 }
 .same-region-cards {
   margin-bottom: 228px;
+}
+
+.delete-listing {
+  position: fixed;
+  width: 623px;
+  height: 222px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  box-shadow: 5px 5px 12px 0px rgba(2, 21, 38, 0.08);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+}
+.heading-delete {
+  font-family: "FiraGO", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: rgba(45, 54, 72, 1);
+}
+
+.two-btns {
+  border: none;
+  background-color: inherit;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+.two-btns:hover {
+  cursor: pointer;
+}
+.cancelBtn {
+  border: 1px solid rgba(249, 59, 29, 1);
+  font-family: "FiraGO";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: center;
+  color: rgba(249, 59, 29, 1);
+}
+.approveBtn {
+  background-color: rgba(249, 59, 29, 1);
+  font-family: "FiraGO";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+.cancelBtn:hover {
+  color: #fff;
+  background-color: #f93b1d;
+}
+.approveBtn:hover {
+  background-color: #df3014;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(2, 21, 38, 0.34);
+  z-index: 500;
+}
+.hidden {
+  display: none;
 }
