@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.same-region-div {
+  max-width: 1596px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+.regions-main-div {
+  /* margin-top: 200px; */
+}
+.regions-main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}

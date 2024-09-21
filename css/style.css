@@ -611,16 +611,15 @@ input[type="checkbox"]:checked:before {
   text-align: start;
 }
 .price-err-msg,
-.area-err-msg {
+.area-err-msg,
+.bedroom-err-msg {
   color: rgba(249, 59, 29, 1);
   font-family: "FiraGO";
   font-size: 12px;
   font-weight: 400;
   line-height: 14.4px;
 }
-.mgs-err-color {
-  border: 1px solid rgba(249, 59, 29, 1);
-}
+
 .bedrooms-list-div {
   position: absolute;
   box-shadow: 5px 5px 12px 0px rgba(2, 21, 38, 0.08);
@@ -633,7 +632,7 @@ input[type="checkbox"]:checked:before {
   width: 282px;
 }
 .bedroom-num-input {
-  margin-bottom: 32px;
+  margin-bottom: 10px;
   width: 41px;
   height: 42px;
   padding: 10px;
@@ -685,6 +684,9 @@ input[type="checkbox"]:checked:before {
   margin-right: 8px;
   margin-bottom: 10px;
 }
+.bedroom-choose-btn {
+  margin-top: 22px;
+}
 .filter-x {
   width: 14px;
   height: 14px;
@@ -708,4 +710,7 @@ input[type="checkbox"]:checked:before {
 }
 .filter-empty-btn:hover {
   cursor: pointer;
+}
+.mgs-err-color {
+  border: 1px solid rgba(249, 59, 29, 1);
 }

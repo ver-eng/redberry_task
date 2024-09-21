@@ -6,6 +6,7 @@ const API_LISTING_URL =
   "https://api.real-estate-manager.redberryinternship.ge/api/real-estates";
 const cardBox = document.querySelector(".cards-box");
 const regionFilter = document.querySelector(".region-filters");
+let clonedData;
 document.addEventListener("DOMContentLoaded", function () {
   fetch(
     "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
@@ -24,75 +25,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((data) => {
-      // console.log(data);
+      clonedData = JSON.parse(JSON.stringify(data));
+
       renderEachCard(data);
+
+      const cards = document.querySelectorAll(".each-card");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", function () {
+          const id = card.getAttribute("id").split("-");
+
+          window.location.href = "/card.html?card_id=" + id[1];
+        });
+      });
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
 
-  function renderEachCard(data) {
-    data.forEach((eachListing) => {
-      const eachCard = `<div class="each-card">
-          <div class="top-part">
-            <div class="is_rental">
-              <span class="is_rental-span">${
-                eachListing.is_rental == 0 ? "იყიდება" : "ქირავდება"
-              }</span>
-            </div>
-            <div class="image-div">
-              <img
-                src="${eachListing.image}"
-                alt="The photo of the flat"
-                class="image"
-              />
-            </div>
-          </div>
-          <div class="bottom-info-div">
-            <div class="price-div">
-              <span class="price-span">${eachListing.price} ₾</span>
-            </div>
-            <div class="address-div">
-              <img
-                src="photos/location-marker.svg"
-                alt="location marker"
-                class="location-icon"
-              />
-              <span class="city-span">${eachListing.city.name}, ${
-        eachListing.address
-      }</span>
-            </div>
-            <div class="rest-info-div">
-              <div class="bed-num-div rest-info-each">
-                <img
-                  src="photos/bed.svg"
-                  class="bed-icon all-three-icons"
-                /><span class="bedroom-num all-three-span">${
-                  eachListing.bedrooms
-                }</span>
-              </div>
-              <div class="area-div rest-info-each">
-                <img
-                  src="photos/area.svg"
-                  class="area-icon all-three-icons"
-                /><span class="area-num all-three-span">${
-                  eachListing.area
-                } მ&#178;</span>
-              </div>
-              <div class="zip-div rest-info-each">
-                <img
-                  src="photos/zipcode.svg"
-                  class="zip-icon all-three-icons"
-                /><span class="zip-num all-three-span">${
-                  eachListing.zip_code
-                }</span>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      cardBox.innerHTML += eachCard;
-    });
-  }
   fetch(API_URL_REGIONS)
     .then((response) => {
       if (!response.ok) {
@@ -121,6 +71,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function renderEachCard(data) {
+  cardBox.innerHTML = "";
+  data.forEach((eachListing, i) => {
+    const eachCard = `<div class="each-card" id="card-${eachListing.id}">
+        <div class="top-part">
+          <div class="is_rental">
+            <span class="is_rental-span">${
+              eachListing.is_rental == 0 ? "იყიდება" : "ქირავდება"
+            }</span>
+          </div>
+          <div class="image-div">
+            <img
+              src="${eachListing.image}"
+              alt="The photo of the flat"
+              class="image"
+            />
+          </div>
+        </div>
+        <div class="bottom-info-div">
+          <div class="price-div">
+            <span class="price-span">${eachListing.price} ₾</span>
+          </div>
+          <div class="address-div">
+            <img
+              src="photos/location-marker.svg"
+              alt="location marker"
+              class="location-icon"
+            />
+            <span class="city-span">${eachListing.city.name}, ${
+      eachListing.address
+    }</span>
+          </div>
+          <div class="rest-info-div">
+            <div class="bed-num-div rest-info-each">
+              <img
+                src="photos/bed.svg"
+                class="bed-icon all-three-icons"
+              /><span class="bedroom-num all-three-span">${
+                eachListing.bedrooms
+              }</span>
+            </div>
+            <div class="area-div rest-info-each">
+              <img
+                src="photos/area.svg"
+                class="area-icon all-three-icons"
+              /><span class="area-num all-three-span">${
+                eachListing.area
+              } მ&#178;</span>
+            </div>
+            <div class="zip-div rest-info-each">
+              <img
+                src="photos/zipcode.svg"
+                class="zip-icon all-three-icons"
+              /><span class="zip-num all-three-span">${
+                eachListing.zip_code
+              }</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    cardBox.innerHTML += eachCard;
+  });
+}
 const eachFilterBtn = document.querySelectorAll(".each-filter-heading-div");
 const allFilterBoxes = document.querySelectorAll(".filter-hidden-div");
 const arrDown = document.querySelectorAll(".arrow-down");
@@ -185,7 +199,6 @@ function validatePriceRange() {
   }
 }
 
-// You can also add event listeners to manually typed input fields to validate
 minPriceInput.addEventListener("input", validatePriceRange);
 maxPriceInput.addEventListener("input", validatePriceRange);
 
@@ -193,13 +206,13 @@ priceChooseBtn.addEventListener("click", function () {
   const isValid = validatePriceRange();
 
   if (isValid) {
-    console.log(isValid);
     priceChooseBtn.parentElement.parentElement.classList.add("hidden");
     priceChooseBtn.parentElement.parentElement.previousElementSibling.children[1].classList.remove(
       "arrow-up"
     );
     addFilterNames();
     clearPriceValues();
+    FilterdataWithEverything();
   }
 });
 const filterNamesDiv = document.querySelector(".filter-names-div");
@@ -225,7 +238,7 @@ function clearPriceValues() {
   maxPriceInput.value = "";
 }
 // ////////////////////////////////////////////////////////////////////
-
+const areaDiv = document.querySelector(".area-div");
 const minAreaInput = document.getElementById("min-area");
 const maxAreaInput = document.getElementById("max-area");
 const areaErrorMsg = document.querySelector(".area-err-msg");
@@ -234,8 +247,7 @@ let maximumArea;
 function validateAreaInput() {
   const minArea = parseFloat(minAreaInput.value) || 0;
   const maxArea = parseFloat(maxAreaInput.value) || 0;
-  console.log(minArea);
-  console.log(maxArea);
+
   minimumArea = minArea;
   maximumArea = maxArea;
   if (minArea && maxArea && minArea > maxArea) {
@@ -281,16 +293,28 @@ areaChooseBtn.addEventListener("click", function () {
     addFilterNamesArea();
     areaChooseBtn.parentElement.parentElement.classList.add("hidden");
     clearAreaValues();
-    priceChooseBtn.parentElement.parentElement.previousElementSibling.children[1].classList.remove(
+    areaChooseBtn.parentElement.parentElement.previousElementSibling.children[1].classList.remove(
       "arrow-up"
     );
+    FilterdataWithEverything();
   }
 });
 
 function addFilterNamesArea() {
+  console.log("redone");
+  console.log(minimumArea);
+  console.log(maximumArea);
+  console.log(areaDiv);
+
+  areaDiv.innerHTML = "";
+  console.log(areaDiv);
   if ((minimumArea === 0) & (maximumArea === 0)) {
+    console.log("returned");
     return;
   } else {
+    console.log("changed");
+    console.log(minimumArea);
+    console.log(maximumArea);
     const filtName = `<div class="each-name">
     <span class="each-filter-name">${minimumArea == 0 ? 0 : minimumArea}მ² - ${
       maximumArea === 0 ? "+" : maximumArea
@@ -300,45 +324,122 @@ function addFilterNamesArea() {
     </button>
   </div>`;
 
-    filterNamesDiv.innerHTML += filtName;
+    areaDiv.innerHTML += filtName;
   }
 }
+
 function clearAreaValues() {
   minAreaInput.value = "";
   maxAreaInput.value = "";
 }
 
 // ////////////////////////////////////////////////////////////////////
-let selectedRegions;
-let selectedRegionsNames;
+let selectedRegions = [];
+let selectedRegionsNames = [];
+
 document
   .querySelector(".region-choose-btn")
   .addEventListener("click", function (e) {
     const checkedRegions = document.querySelectorAll(
       ".region-filters input[type='checkbox']:checked"
     );
-    selectedRegions = Array.from(checkedRegions).map(
-      (checkbox) => checkbox.value
-    );
-    selectedRegionsNames = Array.from(checkedRegions).map(
-      (checkbox) => checkbox.id
-    );
-    console.log(selectedRegionsNames);
+
+    checkedRegions.forEach((checkbox) => {
+      if (!selectedRegionsNames.includes(checkbox.id)) {
+        selectedRegionsNames.unshift(checkbox.id),
+          addRegionFilterNames(checkbox.id);
+      }
+      if (!selectedRegions.includes(checkbox.value)) {
+        selectedRegions.unshift(Number(checkbox.value));
+      }
+    });
     e.target.parentElement.parentElement.classList.add("hidden");
     e.target.parentElement.parentElement.previousElementSibling.children[1].classList.remove(
       "arrow-up"
     );
-    addRegionFilterNames(selectedRegionsNames);
+    clearRegions();
+    FilterdataWithEverything();
   });
-function addRegionFilterNames(regions) {
-  regions.forEach((region) => {
-    const filtName = `<div class="each-name">
+function addRegionFilterNames(region) {
+  const filtName = `<div class="each-name">
     <span class="each-filter-name">${region}</span>
     <button class="filter-x-btn">
       <img src="photos/x.svg" class="filter-x" />
     </button>
   </div>`;
 
-    filterNamesDiv.innerHTML += filtName;
+  filterNamesDiv.innerHTML += filtName;
+}
+
+function clearRegions() {
+  const checkedRegions = document.querySelectorAll(
+    ".region-filters input[type='checkbox']:checked"
+  );
+  checkedRegions.forEach((eachReg) => (eachReg.checked = false));
+}
+
+// //////////////////////////////////////////////////////////
+let bedroomNum = [];
+document
+  .querySelector(".bedroom-num-input")
+  .addEventListener("input", function () {
+    validateBedroomInput();
   });
+
+function validateBedroomInput() {
+  const errorMsg = document.querySelector(".bedroom-err-msg");
+  const bedroomInput = document.getElementById("bedroom-num");
+  const bedroomValue = Number(bedroomInput.value);
+
+  if (bedroomValue < 0 || isNaN(bedroomValue)) {
+    errorMsg.classList.remove("hidden");
+    bedroomInput.classList.add("mgs-err-color");
+    return 0;
+  } else {
+    errorMsg.classList.add("hidden");
+    bedroomInput.classList.remove("mgs-err-color");
+    return 1;
+  }
+}
+document
+  .querySelector(".bedroom-choose-btn")
+  .addEventListener("click", function () {
+    const bedroomInput = document.getElementById("bedroom-num");
+    let roomNums = Number(bedroomInput.value);
+    const isValid = validateBedroomInput();
+    if (isValid) {
+      if (roomNums !== 0 && !bedroomNum.includes(roomNums)) {
+        addBedroomFilterName();
+        bedroomNum.push(Number(roomNums));
+        FilterdataWithEverything();
+      }
+      bedroomInput.parentElement.classList.add("hidden");
+      bedroomInput.value = "";
+    }
+  });
+function addBedroomFilterName() {
+  const bedroomInput = document.getElementById("bedroom-num");
+  const filtName = `<div class="each-name">
+    <span class="each-filter-name">${bedroomInput.value}</span>
+    <button class="filter-x-btn">
+      <img src="photos/x.svg" class="filter-x" />
+    </button>
+  </div>`;
+
+  filterNamesDiv.innerHTML += filtName;
+}
+
+function FilterdataWithEverything() {
+  // console.log(selectedRegions);
+  // console.log(clonedData);
+  // console.log(minimumArea);
+  // console.log(maximumArea);
+  const newData = clonedData.filter((eachData) => {
+    return (
+      bedroomNum.includes(eachData.bedrooms) ||
+      selectedRegions.includes(eachData.city.region_id)
+    );
+  });
+
+  renderEachCard(newData);
 }
