@@ -36,6 +36,7 @@ body {
   position: relative;
 }
 .each-filter-heading-div {
+  font-family: inherit;
   border: none;
   background-color: inherit;
   display: flex;
@@ -52,10 +53,12 @@ body {
 }
 
 .each-filter-heading {
+  font-family: "FiraGo", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.2px;
   color: #021526;
+  text-wrap: nowrap;
 }
 .arrow-down {
   color: #021526;
@@ -99,9 +102,11 @@ body {
   width: 22px;
 }
 .add-span {
+  font-family: "FiraGo", sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #fff;
+  text-wrap: nowrap;
 }
 .add-agent {
   border-radius: 10px;
@@ -163,6 +168,7 @@ body {
   gap: 61px;
 }
 .modal-heading {
+  font-family: "FiraGo", sans-serif;
   font-weight: 500;
   font-size: 32px;
 }
@@ -185,11 +191,13 @@ body {
   align-items: flex-start;
 }
 .first-two-labels {
+  font-family: "FiraGo", sans-serif;
   margin-bottom: 5px;
   font-size: 14px;
   color: #021526;
 }
 .first-four-inputs {
+  font-family: "FiraGo", sans-serif;
   width: 384px;
   padding: 10px;
   border-radius: 6px;
@@ -213,6 +221,7 @@ body {
   height: 8.18px;
 }
 .err-msg-general {
+  font-family: "FiraGo", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #021526;
@@ -266,6 +275,7 @@ body {
   gap: 15px;
 }
 .cancel-btn {
+  font-family: "FiraGo", sans-serif;
   padding: 10px 16px;
   border: 1px solid #f93b1d;
   background-color: #fff;
@@ -275,6 +285,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .add-agent-btn-below {
+  font-family: "FiraGo", sans-serif;
   padding: 10px 16px;
   border-radius: 10px;
   background-color: #f93b1d;
@@ -330,6 +341,7 @@ body {
   align-items: center;
 }
 .is_rental-span {
+  font-family: "FiraGo", sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 14.4px;
@@ -352,6 +364,7 @@ body {
   margin-bottom: 6px;
 }
 .price-span {
+  font-family: "FiraGo", sans-serif;
   font-size: 28px;
   font-weight: 700;
   line-height: 33.6px;
@@ -381,6 +394,7 @@ body {
   width: 18px;
 }
 .city-span {
+  font-family: "FiraGo", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
@@ -400,6 +414,7 @@ body {
   gap: 2.5px;
 }
 .all-three-span {
+  font-family: "FiraGo", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
@@ -412,6 +427,7 @@ body {
   /* position: relative; */
 }
 .filter-div-heading {
+  font-family: "FiraGo", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
@@ -440,6 +456,7 @@ body {
 }
 .filter-label {
   /* font-family: FiraGO; */
+  font-family: "FiraGo", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.8px;
@@ -474,4 +491,221 @@ input[type="checkbox"]:checked:before {
   position: absolute;
   top: 0;
   left: 0;
+}
+.choose-btn-div {
+  text-align: end;
+}
+.choose-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(249, 59, 29, 1);
+  font-family: "FiraGo", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  color: rgba(255, 255, 255, 1);
+  transition: background-color 0.3s ease;
+}
+.choose-btn:hover {
+  cursor: pointer;
+  background-color: #df3014;
+}
+/* .................................. */
+.price-list-div,
+.area-list-div {
+  position: absolute;
+  padding: 24px;
+  top: 57px;
+  left: 145px;
+  z-index: 200;
+  border: 1px solid rgba(219, 219, 219, 1);
+  box-shadow: 5px 5px 12px 0px rgba(2, 21, 38, 0.08);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+}
+.area-list-div {
+  left: 370px;
+}
+.price-filter-input,
+.area-filter-input {
+  border: 1px solid rgba(128, 138, 147, 1);
+  padding: 10px;
+  border-radius: 6px;
+  width: 155px;
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  margin-bottom: 8px;
+  outline: none;
+  position: relative;
+  display: inline-block;
+}
+
+.price-filter-input::before {
+  content: "₾";
+  content: "top";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+
+  z-index: 500;
+}
+.price-filter-input-left,
+.area-filter-input-left {
+  margin-right: 15px;
+}
+.price-headings,
+.area-headings {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 113px;
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+.area-headings {
+  gap: 129px;
+}
+.price-ranges,
+.area-ranges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.price-range,
+.area-range {
+  border: none;
+  background-color: inherit;
+  display: flex;
+  gap: 116px;
+}
+.price-btn:hover,
+.area-range:hover {
+  cursor: pointer;
+}
+.min-price-btn,
+.max-price-btn {
+  width: 65px;
+  text-wrap: nowrap;
+  background-color: inherit;
+  border: none;
+  text-align: start;
+}
+.area-btn {
+  background-color: inherit;
+  border: none;
+}
+.area-btn:hover {
+  cursor: pointer;
+}
+.min-area-span,
+.max-area-span {
+  width: 62px;
+  text-align: start;
+}
+.price-err-msg,
+.area-err-msg {
+  color: rgba(249, 59, 29, 1);
+  font-family: "FiraGO";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+}
+.mgs-err-color {
+  border: 1px solid rgba(249, 59, 29, 1);
+}
+.bedrooms-list-div {
+  position: absolute;
+  box-shadow: 5px 5px 12px 0px rgba(2, 21, 38, 0.08);
+  border: 1px solid rgba(219, 219, 219, 1);
+  z-index: 205;
+  background: rgba(255, 255, 255, 1);
+  top: 57px;
+  padding: 24px;
+  border-radius: 10px;
+  width: 282px;
+}
+.bedroom-num-input {
+  margin-bottom: 32px;
+  width: 41px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(128, 138, 147, 1);
+  outline: none;
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: center;
+  color: rgba(2, 21, 38, 0.4);
+}
+.arrow-up {
+  transform: rotate(180deg);
+}
+.filter-section {
+  max-width: 1596px;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+.filter-section-div {
+  width: 785px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+.filter-names-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.each-filter-name {
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  color: rgba(2, 21, 38, 0.8);
+}
+.each-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5px;
+  border: 1px solid rgba(219, 219, 219, 1);
+  border-radius: 43px;
+  padding: 6px 10px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+.filter-x {
+  width: 14px;
+  height: 14px;
+}
+.filter-x-btn {
+  background-color: inherit;
+  border: none;
+  display: flex;
+}
+.filter-x-btn:hover {
+  cursor: pointer;
+}
+.filter-empty-btn {
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+  border: none;
+  background-color: inherit;
+  color: rgba(2, 21, 38, 1);
+}
+.filter-empty-btn:hover {
+  cursor: pointer;
 }

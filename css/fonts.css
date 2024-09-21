@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "FiraGO";
+  src: url("../fonts/FiraGO_TTF/Roman/FiraGO-Regular.ttf") format("truetype"),
+    url("../fonts/FiraGO_TTF/Roman/FiraGO-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraGO";
+  src: url("../fonts/FiraGO_TTF/Roman/FiraGO-Medium.ttf") format("truetype"),
+    url("../fonts/FiraGO_TTF/Roman/FiraGO-Medium.ttf") format("ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraGO";
+  src: url("../fonts/FiraGO_TTF/Roman/FiraGO-Bold.ttf") format("truetype"),
+    url("../fonts/FiraGO_TTF/Roman/FiraGO-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}

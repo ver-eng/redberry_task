@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <script defer src="js/script.js"></script>
     <script defer src="js/hoverclicks.js"></script>
@@ -30,7 +31,7 @@
                 class="arrow-down"
               />
             </button>
-            <div class="regions-list-div">
+            <div class="regions-list-div filter-hidden-div hidden">
               <h3 class="filter-div-heading">რეგიონის მიხედვით</h3>
               <div class="region-filters">
                 <!-- <div>
@@ -44,7 +45,7 @@
                 </div> -->
               </div>
               <div class="choose-btn-div">
-                <button class="choose-btn">არჩევა</button>
+                <button class="choose-btn region-choose-btn">არჩევა</button>
               </div>
             </div>
           </div>
@@ -57,7 +58,80 @@
                 class="arrow-down"
               />
             </button>
-            <div class="price-list-div"></div>
+
+            <div class="price-list-div filter-hidden-div hidden">
+              <h3 class="filter-div-heading">ფასის მიხედვით</h3>
+              <div class="price-filter-inner">
+                <label for="min-price"></label>
+                <input
+                  type="text"
+                  id="min-price"
+                  placeholder="დან:                         ₾"
+                  class="price-filter-input price-filter-input-left"
+                  value=""
+                />
+
+                <label for="max-price"></label>
+                <input
+                  type="text"
+                  id="max-price"
+                  placeholder="დან:                         ₾"
+                  class="price-filter-input"
+                  value=""
+                />
+                <div>
+                  <span class="price-err-msg hidden"
+                    >ჩაწერეთ ვალიდური მონაცემები</span
+                  >
+                </div>
+                <div class="price-headings">
+                  <span class="min-price price-filter-span">მინ. ფასი</span>
+                  <span class="max-price price-filter-span">მაქს. ფასი</span>
+                </div>
+                <div class="price-ranges">
+                  <div class="price-range">
+                    <button class="min-price-btn price-btn" data-min="50000">
+                      50,000 ₾
+                    </button>
+                    <button class="max-price-btn price-btn" data-max="100000">
+                      100,000 ₾
+                    </button>
+                  </div>
+
+                  <div class="price-range">
+                    <button class="min-price-btn price-btn" data-min="100000">
+                      100,000 ₾</button
+                    ><button class="max-price-btn price-btn" data-max="150000">
+                      150,000 ₾
+                    </button>
+                  </div>
+                  <div class="price-range">
+                    <button class="min-price-btn price-btn" data-min="150000">
+                      150,000 ₾</button
+                    ><button class="max-price-btn price-btn" data-max="200000">
+                      200,000 ₾
+                    </button>
+                  </div>
+                  <div class="price-range">
+                    <button class="min-price-btn price-btn" data-min="200000">
+                      200,000 ₾</button
+                    ><button class="max-price-btn price-btn" data-max="250000">
+                      250,000 ₾
+                    </button>
+                  </div>
+                  <div class="price-range">
+                    <button class="min-price-btn price-btn" data-min="250000">
+                      250,000 ₾</button
+                    ><button class="max-price-btn price-btn" data-max="300000">
+                      300,000 ₾
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="choose-btn-div">
+                <button class="choose-btn price-choose-btn">არჩევა</button>
+              </div>
+            </div>
           </div>
           <div class="area each-filter-div">
             <button class="area-heading each-filter-heading-div">
@@ -68,7 +142,78 @@
                 class="arrow-down"
               />
             </button>
-            <div class="area-list-div"></div>
+            <div class="area-list-div filter-hidden-div hidden">
+              <h3 class="filter-div-heading">ფართობის მიხედვით</h3>
+              <div class="area-filter-inner">
+                <label for="min-area"></label>
+                <input
+                  type="text"
+                  id="min-area"
+                  placeholder="დან:                         "
+                  class="area-filter-input area-filter-input-left"
+                />
+
+                <label for="max-price"></label>
+                <input
+                  type="text"
+                  id="max-area"
+                  placeholder="დან:                         "
+                  class="area-filter-input"
+                />
+                <div>
+                  <span class="area-err-msg hidden"
+                    >ჩაწერეთ ვალიდური მონაცემები</span
+                  >
+                </div>
+                <div class="area-headings">
+                  <span class="min-area area-filter-span">მინ. მ²</span>
+                  <span class="max-area area-filter-span">მაქს. მ²</span>
+                </div>
+                <div class="area-ranges">
+                  <div class="area-range">
+                    <button class="min-area-span area-btn" data-min="40">
+                      40 მ²</button
+                    ><button class="max-area-span area-btn" data-max="50">
+                      50 მ²
+                    </button>
+                  </div>
+
+                  <div class="area-range">
+                    <button class="min-area-span area-btn" data-min="50">
+                      50 მ²</button
+                    ><button class="max-area-span area-btn" data-max="60">
+                      60 მ²
+                    </button>
+                  </div>
+
+                  <div class="area-range">
+                    <button class="min-area-span area-btn" data-min="60">
+                      60 მ²</button
+                    ><button class="max-area-span area-btn" data-max="70">
+                      70 მ²
+                    </button>
+                  </div>
+
+                  <div class="area-range">
+                    <button class="min-area-span area-btn" data-min="70">
+                      70 მ²</button
+                    ><button class="max-area-span area-btn" data-max="80">
+                      80 მ²
+                    </button>
+                  </div>
+                  <div class="area-range">
+                    <button class="min-area-span area-btn" data-min="80">
+                      80 მ²</button
+                    ><button class="max-area-span area-btn" data-max="90">
+                      90 მ²
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="choose-btn-div">
+                <button class="choose-btn area-choose-btn">არჩევა</button>
+              </div>
+            </div>
           </div>
           <div class="bedrooms each-filter-div">
             <button class="bedrooms-heading each-filter-heading-div">
@@ -79,7 +224,14 @@
                 class="arrow-down"
               />
             </button>
-            <div class="bedrooms-list-div"></div>
+            <div class="bedrooms-list-div filter-hidden-div hidden">
+              <h3 class="filter-div-heading">საძინებლების რაოდენობა</h3>
+              <label for="bedroom-num"></label>
+              <input id="bedroom-num" class="bedroom-num-input" type="text" />
+              <div class="choose-btn-div">
+                <button class="choose-btn">არჩევა</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="add-listing-agent">
@@ -278,6 +430,21 @@
             </button>
           </div>
         </form>
+      </div>
+    </section>
+    <section class="filter-section">
+      <div class="filter-section-div">
+        <div class="filter-names-div">
+          <!-- <div class="each-name">
+            <span class="each-filter-name">სვანეთი</span>
+            <button class="filter-x-btn">
+              <img src="photos/x.svg" class="filter-x" />
+            </button>
+          </div> -->
+        </div>
+        <div class="filter-empty-div">
+          <button class="filter-empty-btn">გასუფთავება</button>
+        </div>
       </div>
     </section>
     <section class="section-three">
