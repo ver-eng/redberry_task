@@ -212,7 +212,7 @@ priceChooseBtn.addEventListener("click", function () {
     );
     addFilterNames();
     clearPriceValues();
-    FilterdataWithEverything();
+    // FilterdataWithEverything();
   }
 });
 const filterNamesDiv = document.querySelector(".filter-names-div");
@@ -290,13 +290,13 @@ const areaChooseBtn = document.querySelector(".area-choose-btn");
 areaChooseBtn.addEventListener("click", function () {
   const isValidated = validateAreaInput();
   if (isValidated) {
-    addFilterNamesArea();
+    // addFilterNamesArea();
     areaChooseBtn.parentElement.parentElement.classList.add("hidden");
     clearAreaValues();
     areaChooseBtn.parentElement.parentElement.previousElementSibling.children[1].classList.remove(
       "arrow-up"
     );
-    FilterdataWithEverything();
+    // FilterdataWithEverything();
   }
 });
 
@@ -453,3 +453,19 @@ function FilterdataWithEverything() {
     });
   });
 }
+
+document
+  .querySelector(".filter-empty-btn")
+  .addEventListener("click", function () {
+    filterNamesDiv.innerHTML = "";
+    renderEachCard(clonedData);
+    const cards = document.querySelectorAll(".each-card");
+
+    cards.forEach((card) => {
+      card.addEventListener("click", function () {
+        const id = card.getAttribute("id").split("-");
+
+        window.location.href = "/card.html?card_id=" + id[1];
+      });
+    });
+  });
