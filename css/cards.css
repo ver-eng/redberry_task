@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-/* .header {
+.header {
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
 }
@@ -70,15 +70,10 @@
 .main-info-div {
   display: flex;
   gap: 68px;
-} */
-/* ////////////////////////////////////////////////////////////////// */
-/* .same-region-div { */
-/* max-width: 1596px;
-  margin: 0 auto;
-  display: flex;
-  gap: 20px;
 }
-.rice-div {
+/* ////////////////////////////////////////////////////////////////// */
+
+.price-div {
   margin: 30px 0 24px 0;
 }
 .price-span {
@@ -87,6 +82,9 @@
   font-weight: 700;
   line-height: 33.6px;
   text-align: left;
+}
+.right-photo-div {
+  /* width: 503px; */
 }
 .address-div {
   margin-bottom: 20px;
@@ -102,14 +100,204 @@
   align-items: center;
   gap: 0.8px;
 }
-
-.regions-main-div {
+.city-span {
+  font-family: "FiraGO";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  color: rgba(128, 138, 147, 1);
+}
+.rest-info-each {
+  margin-bottom: 16px;
+}
+.description {
+  width: 503px;
+  margin: 24px 0 50px 0;
+}
+.description-para {
+  font-family: "FiraGO", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+}
+.agent-info-div {
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(219, 219, 219, 1);
+  padding: 24px 20px 24px 20px;
+  width: 503px;
+}
+.agent-photo-and-next {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 16px;
+}
+.agent-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 100px;
+}
+.name-lastname {
+  font-family: "FiraGO", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: rgba(2, 21, 38, 1);
+}
+.agenti {
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  color: rgba(103, 110, 118, 1);
+}
+.email-text {
+  font-family: "FiraGO", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  color: rgba(128, 138, 147, 1);
+}
+.img-photos-icon {
+  width: 16px;
+  height: 13px;
+  margin-right: 5px;
+}
+.listing-delete-btn {
+  border: none;
+  border: 1px solid rgba(103, 110, 118, 1);
+  background-color: inherit;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: "FiraGO", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.4px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.listing-delete-btn:hover {
+  background-color: rgba(128, 138, 147, 1);
+  color: rgba(255, 255, 255, 1);
+}
+.similar-appt {
+  margin: 53px 0 52px 0;
+  font-family: "FiraGO", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 38.4px;
+  text-align: left;
+  color: rgba(2, 21, 38, 1);
+}
+.each-card {
+  width: 384px;
+}
+.top-part {
+  position: relative;
+  height: 307px;
+  width: 384px;
+}
+.is_rental {
+  position: absolute;
+  border-radius: 15px;
+  width: 90px;
+  background-color: rgba(2, 21, 38, 0.5);
+  padding: 6px;
+  top: 23px;
+  left: 23px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 20px;
-} */
-
+}
+.is_rental-span {
+  font-family: "FiraGo", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.4px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+.image {
+  border-radius: 14px, 14px, 0px, 0px;
+  height: 307px;
+  width: 384px;
+}
+.bottom-info-div {
+  padding: 22px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: rgba(219, 219, 219, 1);
+  border-radius: 0 0 14px 14px;
+}
+.price-div {
+  margin-bottom: 6px;
+}
+.price-span {
+  font-family: "FiraGo", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33.6px;
+  text-align: left;
+}
+.address-div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8px;
+}
+.location-icon {
+  height: 20px;
+  width: 20px;
+}
+.city-span {
+  font-family: "FiraGo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  color: rgba(2, 21, 38, 0.7);
+}
+.rest-info-div {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rest-info-each {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5px;
+}
+.bed-icon {
+  height: 24px;
+  width: 24px;
+}
+.area-icon {
+  height: 18px;
+  width: 18px;
+}
+.zip-icon {
+  height: 16px;
+  width: 18px;
+}
+.all-three-span {
+  font-family: "FiraGo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  color: rgba(2, 21, 38, 0.7);
+}
 /* ///////////////////////////////////////////////////// */
 .same-region-div {
   max-width: 1596px;
@@ -137,4 +325,15 @@
 button {
   padding: 10px;
   cursor: pointer;
+}
+.right-click,
+.left-click {
+  background-color: inherit;
+  border: none;
+}
+button:hover {
+  cursor: pointer;
+}
+.same-region-cards {
+  margin-bottom: 228px;
 }

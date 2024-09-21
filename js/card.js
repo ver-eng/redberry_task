@@ -155,3 +155,124 @@ function updateSlider(cardWidth, totalCardsLength) {
   const transformValue = -(currentIndex * cardWidth);
   sameRegionDiv.style.transform = `translateX(${transformValue}px)`;
 }
+
+// ////////////////////////////////////////////////////////////////////////////
+
+fetch(
+  `https://api.real-estate-manager.redberryinternship.ge/api/real-estates/${cardId}`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  }
+)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    renderClickedCard(data);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+const cardDiv = document.querySelector(".card-div");
+function renderClickedCard(data) {
+  const date = new Date(data.created_at);
+  const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(
+    date.getMonth() + 1
+  ).padStart(2, "0")}/${date.getFullYear()}`;
+  const carrdInfo = `<div class="main-info-div">
+        <div class="left-photo-div">
+          <p class="is_rental-on-photo">${
+            data.is_rental == 0 ? "იყიდება" : "ქირავდება"
+          }</p>
+          <div class="image-div">
+            <img src="${data.image}" class="main-img" />
+          </div>
+          <p class="publish-date">გამოქვეყნების თარიღი ${formattedDate}</p>
+        </div>
+        <div class="right-photo-div">
+          <div class="bottom-info-div-other">
+            <div class="price-div">
+              <span class="price-span">${data.price} ₾</span>
+            </div>
+            <div class="address-div">
+              <img
+                src="photos/location-marker.svg"
+                alt="location marker"
+                class="location-icon"
+              />
+              <span class="city-span">${data.city.name}, ${data.address}</span>
+            </div>
+            <div class="rest-info-div">
+              <div class="bed-num-div rest-info-each">
+                <img
+                  src="photos/bed.svg"
+                  class="bed-icon all-three-icons"
+                /><span class="bedroom-num all-three-span city-span">
+                  ფართი ${data.area} მ²;</span
+                >
+              </div>
+              <div class="area-div rest-info-each">
+                <img
+                  src="photos/area.svg"
+                  class="area-icon all-three-icons"
+                /><span class="area-num all-three-span city-span">
+                  საძინებელი ${data.bedrooms}</span
+                >
+              </div>
+              <div class="zip-div rest-info-each">
+                <img
+                  src="photos/zipcode.svg"
+                  class="zip-icon all-three-icons"
+                /><span class="zip-num all-three-span city-span">
+                  საფოსტო ინდექსი ${data.zip_code}</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="description">
+            <p class="description-para">
+              ${data.description}
+            </p>
+          </div>
+          <div class="agent-info-div">
+            <div class="agent-photo-and-next">
+              <img src="photos/agent-photo.png" class="agent-photo" />
+              <div class="other-info">
+                <p class="name-lastname">${data.agent.name} ${
+    data.agent.surname
+  }</p>
+                <p class="agenti">აგენტი</p>
+              </div>
+            </div>
+            <div>
+              <div class="email">
+                <img src="photos/email-icon.svg" class="img-photos-icon" /><span
+                  class="email-text"
+                  >${data.agent.email}</span
+                >
+              </div>
+              <div class="phone-num">
+                <img src="photos/phone-num.svg" class="img-photos-icon" /><span
+                  class="email-text"
+                  >${data.agent.phone}</span
+                >
+              </div>
+            </div>
+          </div>
+          <button class="listing-delete-btn">ლისტინგის წაშლა</button>
+        </div>
+      </div>`;
+  cardDiv.innerHTML = carrdInfo;
+}
+
+document.querySelector(".go-back-btn").addEventListener("click", function () {
+  window.location = "index.html";
+});
