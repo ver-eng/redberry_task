@@ -5,15 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="js/card.js"></script>
     <link href="css/cards.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
     <div id="card"></div>
 
+    <header class="header">
+      <nav class="navigation">
+        <a href="index.html" class="logo-link">
+          <img src="photos/LOGO-02 3.svg" alt="Redberry Logo" class="logo" />
+        </a>
+      </nav>
+    </header>
+    <section class="section-one">
+      <div class="section-one-div">
+        <button class="go-back-btn">
+          <img src="photos/goBack.svg" class="go-back-img" />
+        </button>
+      </div>
+      <div class="main-info-div">
+        <div class="left-photo-div">
+          <p class="is_rental-on-photo">იყიდება</p>
+          <div class="image-div">
+            <img src="photos/image2.png" class="main-img" />
+          </div>
+          <p class="publish-date">გამოქვეყნების თარიღი</p>
+        </div>
+        <div class="right-photo-div">
+          <div class="bottom-info-div">
+            <div class="price-div">
+              <span class="price-span">80 000 ₾</span>
+            </div>
+            <div class="address-div">
+              <img
+                src="photos/location-marker.svg"
+                alt="location marker"
+                class="location-icon"
+              />
+              <span class="city-span">თბილისი, ი.ჭავჭავაძის 53</span>
+            </div>
+            <div class="rest-info-div">
+              <div class="bed-num-div rest-info-each">
+                <img
+                  src="photos/bed.svg"
+                  class="bed-icon all-three-icons"
+                /><span class="bedroom-num all-three-span">
+                  ფართი 55 მ&#178;</span
+                >
+              </div>
+              <div class="area-div rest-info-each">
+                <img
+                  src="photos/area.svg"
+                  class="area-icon all-three-icons"
+                /><span class="area-num all-three-span"> საძინებელი 2</span>
+              </div>
+              <div class="zip-div rest-info-each">
+                <img
+                  src="photos/zipcode.svg"
+                  class="zip-icon all-three-icons"
+                /><span class="zip-num all-three-span">
+                  საფოსტო ინდექსი 0160</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="description">
+            <p class="description-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+              sapiente consectetur modi commodi aspernatur fuga provident
+              pariatur dignissimos perspiciatis recusandae alias, iusto
+              laboriosam vitae, magni voluptatibus illum. Veniam, impedit
+              distinctio?
+            </p>
+          </div>
+          <div class="agent-info-div">
+            <div class="agent-photo-and-next">
+              <img src="photos/agent-photo.png" />
+              <div class="other-info">
+                <p class="name-lastname">სოფიო გელოვანი</p>
+                <p class="agenti">აგენტი</p>
+              </div>
+            </div>
+            <div>
+              <div class="email">
+                <img src="photos/email-icon.svg" class="img-photos-icon" /><span
+                  class="email-text"
+                  >sophio.gelovani@redberry.ge</span
+                >
+              </div>
+              <div class="phone-num">
+                <img src="photos/phone-num.svg" class="img-photos-icon" /><span
+                  class="email-text"
+                  >577 777 777</span
+                >
+              </div>
+            </div>
+          </div>
+          <button class="listing-delete-btn">ლისტინგის წაშლა</button>
+        </div>
+      </div>
+    </section>
+
     <section class="same-region-cards">
       <div class="regions-main-div">
         <button class="left-click">left-btn</button>
-        <div class="same-region-div"></div>
+        <div class="same-region-div">
+          <div class="slider-container"></div>
+          <div class="no-cards" style="display: none">No Cards</div>
+        </div>
         <button class="right-click">right-btn</button>
       </div>
     </section>

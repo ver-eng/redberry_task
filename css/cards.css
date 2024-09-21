@@ -4,18 +4,137 @@
   box-sizing: border-box;
 }
 
-.same-region-div {
-  max-width: 1596px;
+/* .header {
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #fff;
+}
+
+.logo {
+  width: 150px;
+  height: 24px;
+  margin: 38px 0 38px 162px;
+}
+.section-one-div {
+  margin-top: 64px;
+  margin-bottom: 29px;
+}
+.go-back-btn {
+  background-color: inherit;
+  border: none;
+}
+.go-back-btn:hover {
+  cursor: pointer;
+}
+.go-back-img {
+  height: 32px;
+  width: 32px;
+}
+.left-photo-div {
+  position: relative;
+  width: 839px;
+}
+.is_rental-on-photo {
+  background-color: rgba(2, 21, 38, 0.5);
+  padding: 6px;
+  border-radius: 20px;
+  width: 142px;
+  font-family: "FiraGO";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  top: 41px;
+  left: 41px;
+  position: absolute;
+}
+.main-img {
+  width: 839px;
+  height: 670px;
+  border-radius: 14px 14px 0 0px;
+}
+.publish-date {
+  text-align: end;
+  font-family: "FiraGO";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+
+  color: rgba(128, 138, 147, 1);
+}
+.section-one {
+  max-width: 1591px;
+  margin: 0 auto;
+}
+.main-info-div {
+  display: flex;
+  gap: 68px;
+} */
+/* ////////////////////////////////////////////////////////////////// */
+/* .same-region-div { */
+/* max-width: 1596px;
   margin: 0 auto;
   display: flex;
   gap: 20px;
 }
-.regions-main-div {
-  /* margin-top: 200px; */
+.rice-div {
+  margin: 30px 0 24px 0;
 }
+.price-span {
+  font-family: "FiraGo", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33.6px;
+  text-align: left;
+}
+.address-div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8px;
+}
+.address-div {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8px;
+}
+
 .regions-main-div {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 20px;
+} */
+
+/* ///////////////////////////////////////////////////// */
+.same-region-div {
+  max-width: 1596px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.each-card {
+  width: 25%;
+  flex-shrink: 0;
+}
+
+.regions-main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
 }

@@ -434,6 +434,7 @@ function FilterdataWithEverything() {
   // console.log(clonedData);
   // console.log(minimumArea);
   // console.log(maximumArea);
+
   const newData = clonedData.filter((eachData) => {
     return (
       bedroomNum.includes(eachData.bedrooms) ||
@@ -442,4 +443,13 @@ function FilterdataWithEverything() {
   });
 
   renderEachCard(newData);
+  const cards = document.querySelectorAll(".each-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", function () {
+      const id = card.getAttribute("id").split("-");
+
+      window.location.href = "/card.html?card_id=" + id[1];
+    });
+  });
 }
